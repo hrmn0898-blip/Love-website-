@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>hmmu ❤️ billu</title>
+
+<style>
+
+/* Background animation */
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background: linear-gradient(-45deg, #ff6ec4, #7873f5, #ff9a9e, #fad0c4);
+background-size: 400% 400%;
+animation: gradientBG 10s ease infinite;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+@keyframes gradientBG{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+/* Pages */
+.page{
+display:none;
+padding-top:100px;
+animation: fade 1s;
+}
+
+.active{
+display:block;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* Buttons */
+button{
+padding:15px 25px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4ec4;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 15px rgba(255,255,255,0.5);
+}
+
+button:hover{
+transform:scale(1.1);
+background:#ffd6f7;
+}
+
+/* Hearts */
+.heart{
+position:absolute;
+color:red;
+font-size:20px;
+animation: float 5s linear infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+}
+
+/* Popup */
+.popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+color:#ff4ec4;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+animation: fade 0.5s;
+}
+
+</style>
+
+</head>
+<body>
+
+
+<!-- Home Page -->
+<div class="page active" id="home">
+
+<h1>💖 hmmu & billu 💖</h1>
+
+<p>
+You are my happiness 😊<br>
+My safe place 🌸<br>
+My forever ❤️
+</p>
+
+<button onclick="openPage('feelings')">Read Feelings 💌</button>
+
+<button onclick="showSurprise()">Surprise 🎁</button>
+
+</div>
+
+
+<!-- Feelings Page -->
+<div class="page" id="feelings">
+
+<h1>💞 My Feelings 💞</h1>
+
+<p>
+billu, you changed my life ✨<br>
+You make every moment beautiful 💕<br>
+You are my dream come true 🌹
+</p>
+
+<button onclick="openPage('final')">Final Message 🌹</button>
+
+<button onclick="openPage('home')">Back 🏠</button>
+
+</div>
+
+
+<!-- Final Page -->
+<div class="page" id="final">
+
+<h1>♾️ Forever ♾️</h1>
+
+<p>
+No matter what happens,<br>
+hmmu will always love billu ❤️<br>
+Forever and always 💖
+</p>
+
+<button onclick="openPage('home')">Home 🏠</button>
+
+</div>
+
+
+<!-- Popup -->
+<div class="popup" id="popup">
+
+<h2>💌 Surprise Letter</h2>
+
+<p>
+Dear billu,<br><br>
+You are the best thing in hmmu's life ❤️<br>
+Thank you for being mine 💕<br><br>
+Forever yours,<br>
+hmmu 💖
+</p>
+
+<button onclick="closeSurprise()">Close</button>
+
+</div>
+
+
+
+<script>
+
+/* Page navigation */
+function openPage(pageId){
+
+var pages=document.getElementsByClassName("page");
+
+for(var i=0;i<pages.length;i++){
+pages[i].style.display="none";
+}
+
+document.getElementById(pageId).style.display="block";
+}
+
+
+/* Surprise popup */
+function showSurprise(){
+document.getElementById("popup").style.display="block";
+}
+
+
+/* Close popup */
+function closeSurprise(){
+document.getElementById("popup").style.display="none";
+}
+
+
+/* Floating hearts */
+function createHeart(){
+
+var heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*20+15)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(function(){
+heart.remove();
+},5000);
+
+}
+
+setInterval(createHeart,500);
+
+</script>
+
+
+</body>
+</html>
